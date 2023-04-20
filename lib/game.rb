@@ -1,6 +1,6 @@
 # use require_relative
 class Game 
-initialize games.csv
+# initialize games.csv
 #^this was in the miro board so I included it but I'm not sure where it goes/if it needs more to it, etc.
 
 attr_reader :game_id, 
