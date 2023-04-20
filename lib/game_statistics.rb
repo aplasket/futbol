@@ -14,7 +14,7 @@ class GameStatistics
   end
 
   def percentage_home_wins
-    @games. (method for calculating this)
+    # @games. (method for calculating this)
   end
 
   def percentage_visitor_wins
