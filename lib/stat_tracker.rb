@@ -1,13 +1,15 @@
-require_relative "csv"
+require "csv"
 
 class StatTracker
   def initialize(files)
     @game_stats = GameStatistics.new(files)
-   end
+  end
 
   def self.from_csv(csv)
-    new_stat = StatTracker.new
+    new_stat = StatTracker.new(files)
   end
+
+  ##### Game Statistics #####
 
   def highest_total_score
     @game_stats.highest_total_score
@@ -40,4 +42,13 @@ class StatTracker
   def average_goals_by_season
     @game_stats.average_goals_by_season
   end
+
+  ##### League Statistics #####
+
+  ##### Season Statistics  #####
+
+
+
+
+
 end
