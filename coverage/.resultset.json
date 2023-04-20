@@ -1,7 +1,73 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/matthewjohnson/1mod_projects/futbol/lib/runner.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          null,
+          1,
+          null,
+          null,
+          null,
+          null,
+          1
+        ]
+      },
+      "/Users/matthewjohnson/1mod_projects/futbol/lib/stat_tracker.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null
+        ]
+      }
     },
-    "timestamp": 1681910019
+    "timestamp": 1682000344
   }
 }
