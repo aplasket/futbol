@@ -1,13 +1,17 @@
 require "csv"
+require_relative "./game_statistics"
 
 class StatTracker
+  attr_reader :game_stats
+
+  def self.from_csv(files)
+    new_stat = StatTracker.new(files)
+  end
+
   def initialize(files)
     @game_stats = GameStatistics.new(files)
   end
 
-  def self.from_csv(csv)
-    new_stat = StatTracker.new(files)
-  end
 
   ##### Game Statistics #####
 
