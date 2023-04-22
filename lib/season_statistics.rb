@@ -22,7 +22,7 @@ class SeasonStatistics < StatHelper
 #     method
 #   end
 
-  def most_tackles
+  def most_tackles(year)
     team_tackles = Hash.new(0)
     total_games = Hash.new(0)
 
@@ -37,7 +37,7 @@ class SeasonStatistics < StatHelper
     @teams.find {|team| team.team_id == most_tacks.first}.team_name
   end
 
-  def fewest_tackles
+  def fewest_tackles(year)
     team_tackles = Hash.new(0)
     total_games = Hash.new(0)
 
