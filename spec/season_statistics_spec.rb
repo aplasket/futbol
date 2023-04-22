@@ -23,8 +23,6 @@ RSpec.describe SeasonStatistics do
     end
   end
 
-# Commented out tests below for now so running `rspec spec` will pass tests since we have not yet begun our code. 
-  
 #   describe "#winningest_coach" do
 #     xit " names the Coach with the best win percentage for the season" do 
 
@@ -53,19 +51,17 @@ RSpec.describe SeasonStatistics do
 #     end
 #   end
 
-#   describe "#most_tackles" do
-#     xit " names the Team with the most tackles in the season" do 
+  describe "#most_tackles" do
+    it "names the Team with the most tackles in the season" do 
+      expect(@season_stats.most_tackles).to eq("FC Cincinnati")
+      expect(@season_stats.most_tackles).to be_a(String)
+    end
+  end
 
-#       # return value string
-#     end
-#   end
-
-#   describe "#fewest_tackles" do
-#     xit " names the Team with the fewest tackles in the season" do 
-
-#       # return value string
-#     end
-#   end
-
-
+  describe "#fewest_tackles" do
+    it "names the Team with the fewest tackles in the season" do 
+      expect(@season_stats.fewest_tackles).to eq("Reign FC")
+      expect(@season_stats.fewest_tackles).to be_a(String)
+    end
+  end
 end
