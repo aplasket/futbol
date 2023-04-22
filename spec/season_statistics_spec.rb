@@ -27,7 +27,7 @@ RSpec.describe SeasonStatistics do
   
   describe "#winningest_coach" do
     it " names the Coach with the best win percentage for the season" do 
-      expect(@game_stats.winningest_coach).to be_a(String)
+      expect(@season_stats.winningest_coach).to eq([])
       # return value string
     end
   end
