@@ -6,7 +6,7 @@ class SeasonStatistics < StatHelper
     super
   end
 
-  def coach_record
+  def coaches_record
     coaches = Hash.new
   
     @game_teams.each do |team|
@@ -37,7 +37,7 @@ class SeasonStatistics < StatHelper
   
   def winningest_coach
     coaches_winning_percentage = Hash.new
-    coach_record.map do |coach, record|
+    coaches_record.map do |coach, record|
       coaches_winning_percentage[coach] = (record[:wins].to_f) / (record[:games_coached].to_f) * 100
     end
     best_coach = coaches_winning_percentage
@@ -46,7 +46,7 @@ class SeasonStatistics < StatHelper
 
   def worst_coach
     coaches_losing_percentage = Hash.new
-    coach_record.map do |coach, record|
+    coaches_record.map do |coach, record|
       coaches_losing_percentage[coach] = (record[:losses].to_f) / (record[:games_coached].to_f) * 100
     end
     worst_coach = coaches_losing_percentage
