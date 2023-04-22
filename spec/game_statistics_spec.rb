@@ -57,10 +57,10 @@ RSpec.describe GameStatistics do
     end
   end
 
-    describe "#percentage_ties" do
-      it "returns a percentage of games that both teams have won as a float (rounded to the nearest 100th)" do
-        expect(@game_stats.percentage_ties).to be_a(Float)
-        expect(@game_stats.percentage_ties).to eq(0.20)
+  describe "#percentage_ties" do
+    it "returns a percentage of games that both teams have won as a float (rounded to the nearest 100th)" do
+      expect(@game_stats.percentage_ties).to be_a(Float)
+      expect(@game_stats.percentage_ties).to eq(0.20)
     end
   end
 
@@ -85,10 +85,10 @@ RSpec.describe GameStatistics do
     end
 
   describe "#average_goals_by_season" do 
-    xit "can calculate the average goals per season" do 
+    it "can calculate the average goals per season" do 
       expect(@game_stats.average_goals_by_season).to be_a(Hash)
-      expect(@game_stats.average_goals_by_season.keys[0]).to be_a String
-      expect(@game_stats.average_goals_by_season.values[0]).to be_a Float
+      expect(@game_stats.average_goals_by_season.keys[0]).to be_a (String)
+      expect(@game_stats.average_goals_by_season.values[0]).to be_a (Float)
     end
   end
 end

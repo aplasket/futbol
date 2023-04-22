@@ -22,36 +22,27 @@ RSpec.describe LeagueStatistics do
       expect(@stat_tracker).to be_a(StatTracker)
     end
   end
-# Commented out tests below for now so running `rspec spec` will pass tests since we have not yet begun our code. 
-
-
   
-#   describe "#count_of_teams" do
-#     xit " counts the total number of teams in the data" do
-        
-        # expect(@stat_tracker.teams.count_of_teams).to be_an(Integer)
-        # expect(@stat_tracker.teams.count_of_teams).to eq(32)
-#       # return value integer
-#     end
-#   end
+  describe "#count_of_teams" do
+    it " counts the total number of teams in the data" do    
+        expect(@league_stats.count_of_teams).to be_an(Integer)
+        expect(@league_stats.count_of_teams).to eq(32)
+    end
+  end
 
-#   describe "#best_offense" do
-#     xit " names the team with the highest average number of goals scored per game across all seasons" do 
+  describe "#best_offense" do
+    xit " names the team with the highest average number of goals scored per game across all seasons" do 
+        expect(@league_stats.best_offense).to be_a(String)
+        # expect(@league_stats.best_offense).to eq("INSERTNAME")
+    end
+  end
 
-        # expect(@stat_tracker.teams.best_offense).to be_a(String)
-        # expect(@stat_tracker.teams.best_offense).to eq("INSERTNAME")
-#       # return value string
-#     end
-#   end
-
-#   describe "#worst_offense" do
-#     xit " names the team with the lowest average number of goals scored per game across all seasons" do 
-
-        # expect(@stat_tracker.teams.worst_offense).to be_a(String)
-        # expect(@stat_tracker.teams.worst_offense).to eq("INSERTNAME")
-#       # return value string
-#     end
-#   end
+  describe "#worst_offense" do
+    xit " names the team with the lowest average number of goals scored per game across all seasons" do 
+        expect(@league_stats.worst_offense).to be_a(String)
+        # expect(@league_stats.teams.worst_offense).to eq("INSERTNAME")
+    end
+  end
 
   describe "#highest scoring visitor" do
     it " names the team with the highest average score per game across all seasons when they are away" do 
@@ -64,10 +55,10 @@ RSpec.describe LeagueStatistics do
     it "names the team with the highest average score per game across all seasons when they are home" do 
       expect(@league_stats.highest_scoring_home_team).to eq("Reign FC")
       expect(@league_stats.highest_scoring_home_team).to be_a(String)
+    end
   end
-end
 
-describe "#lowest scoring visitor" do
+  describe "#lowest scoring visitor" do
     it " names the team with the lowest average score per game across all seasons when they are away" do 
       expect(@league_stats.lowest_scoring_visitor).to eq("San Jose Earthquakes")
       expect(@league_stats.lowest_scoring_visitor).to be_a(String)

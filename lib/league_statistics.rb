@@ -7,12 +7,21 @@ class LeagueStatistics < StatHelper
     super
   end
 
-  # def count_of_teams
-  #   @teams.length
-  # end
+  def count_of_teams
+    @teams.length
+  end
 
   # def offense_avg
-    
+  #   total_goals = {}
+  #   game_count = 0
+  #   @game_teams.each do |team|
+  #     game_count =
+  #     total_goals[team.team_id] = ((team.goals.sum) / game_count)
+  #   require 'pry'; binding.pry
+  #   end
+# ^this method is still in progress, not working yet
+
+
   # end
 
 # Pseudocode: access the game_teams.csv file
@@ -21,9 +30,10 @@ class LeagueStatistics < StatHelper
 # Divide the total goals by number of games for each team
 
   # def best_offense
-    # offense_avg
+  #   offense_avg
     
   # end
+# ^this method is still in progress, not working yet
 
 # Pseudocode: access the game_teams.csv file
 # Pull the team_id and goals variables for each game
