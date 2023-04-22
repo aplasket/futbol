@@ -37,16 +37,18 @@ class SeasonStatistics < StatHelper
     @teams.find {|team| team.team_id == most_tacks.first}.team_name
   end
 
-# Description: Name of the Team with the most tackles in the season
-# Return Value: String
-
-
-
   def fewest_tackles
-    # method
+    team_tackles = Hash.new(0)
+    total_games = Hash.new(0)
+
+    @game_teams.each do |team|
+      team_id = team.team_id
+      tackles = team.tackles
+      team_tackles[team_id] += tackles
+      total_games[team_id] += 1
+    end
+
+    fewest_tacks = team_tackles.min_by {|id, avg| avg}  
+    @teams.find {|team| team.team_id == fewest_tacks.first}.team_name
   end
-
-# Description: Name of the Team with the fewest tackles in the season
-# Return Value: String
-
 end 
