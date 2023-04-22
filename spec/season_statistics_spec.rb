@@ -52,16 +52,16 @@ RSpec.describe SeasonStatistics do
 #   end
 
   describe "#most_tackles" do
-    xit "names the Team with the most tackles in the season" do 
-
-      # return value string
+    it "names the Team with the most tackles in the season" do 
+      expect(@season_stats.most_tackles).to eq("FC Cincinnati")
+      expect(@season_stats.most_tackles).to be_a(String)
     end
   end
 
   describe "#fewest_tackles" do
     xit "names the Team with the fewest tackles in the season" do 
-
-      # return value string
+      # expect(@season_stats.fewest_tackles).to eq("TEAMNAME")
+      expect(@season_stats.fewest_tackles).to be_a(String)
     end
   end
 end
