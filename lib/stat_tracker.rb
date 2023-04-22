@@ -4,8 +4,7 @@ require_relative "game_teams"
 require_relative "game_statistics"
 require_relative "league_statistics"
 require_relative "season_statistics"
-require_relative "./teams"
-#lg note: I noticed the stat_helper file paths contain "./" ; which is correct?
+require_relative "teams"
 
 class StatTracker
   attr_reader :games,
