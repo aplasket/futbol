@@ -6,9 +6,9 @@ class SeasonStatistics < StatHelper
     super
   end
   
-#   def winningest_coach
-#     method
-#   end
+  def winningest_coach
+      
+  end
 
 #   def worst_coach
 #     method
