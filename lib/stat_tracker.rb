@@ -55,11 +55,7 @@ class StatTracker
   def count_of_teams
     @teams.count_of_teams
   end
-
-  def offense_avg
-    @teams.offense_avg
-  end
-
+  
   def best_offense
     @teams.best_offense
   end

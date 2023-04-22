@@ -23,7 +23,6 @@ class GameTeams
     @game_id =        row[:game_id]
     @team_id =        row[:team_id]
     @hoa =            row[:hoa]
-    @hoa =            row[:hoa]
     @result =         row[:result]
     @settled_in =     row[:settled_in]
     @head_coach =     row[:head_coach]
