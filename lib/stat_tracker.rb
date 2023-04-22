@@ -56,17 +56,15 @@ class StatTracker
     @teams.count_of_teams
   end
 
-  def offense_avg
-    @teams.offense_avg
-  end
-
   def best_offense
-    @teams.best_offense
+    @game_teams.best_offense
   end
+# lg note: this method uses data from the game_teams and teams csv files. Not sure if @game_teams is the correct way to call this?
 
   def worst_offense
-    @teams.worst_offense
+    @game_teams.worst_offense
   end
+# lg note: this method uses data from the game_teams and teams csv files. Not sure if @game_teams is the correct way to call this?
 
   # def initialize(files)
   #   @game_stats = GameStatistics.new(files)
