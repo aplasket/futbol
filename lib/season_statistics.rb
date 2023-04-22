@@ -18,16 +18,16 @@ class SeasonStatistics < StatHelper
 #     method
 #   end
 
-#   describe least_accurate_team
+#   def least_accurate_team
 #     method
 #   end
 
-#   describe most_tackles
-#     method
-#   end
+  def most_tackles
+    # method
+  end
 
-#   describe fewest_tackles
-#     method
-#   end
+  def fewest_tackles
+    # method
+  end
 
 end 
