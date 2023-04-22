@@ -19,6 +19,7 @@ RSpec.describe GameStatistics do
   describe "#initialize" do
     it "exists" do
       expect(@game_stats).to be_a(GameStatistics)
+      expect(@stat_tracker.game_stats).to be_a(GameStatistics)
       expect(@stat_tracker).to be_a(StatTracker)
     end
   end
