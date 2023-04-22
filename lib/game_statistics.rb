@@ -1,5 +1,6 @@
 require_relative "./stat_tracker"
 require_relative "./stat_helper"
+
 class GameStatistics < StatHelper
 
   def initialize(files)
@@ -30,8 +31,8 @@ class GameStatistics < StatHelper
   def percentage_visitor_wins
     visitor_wins = 0
     @game_teams.find_all do |row|
-      visitor_wins += 1 if row.hoa == "away" && row.result == "WIN" || 
-                           row.hoa == "home" && row.result == "LOSS"
+      visitor_wins += 1 if  row.hoa == "away" && row.result == "WIN" || 
+                            row.hoa == "home" && row.result == "LOSS"
     end
     (visitor_wins.to_f / @game_teams.count.to_f).round(2)
   end
