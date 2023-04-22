@@ -5,9 +5,42 @@ class SeasonStatistics < StatHelper
   def initialize(files)
     super
   end
+
+  def record_of_each_coach
+    coaches = Hash.new
+  
+    @game_teams.each do |team|
+      coach = team.head_coach
+      results = team.result
+      if !coaches.key?(coach)
+        coaches[coach] = {games_coached: 1, wins: 0, losses: 0, ties: 0}
+        if results == "WIN"
+          coaches[coach][:wins] += 1
+        elsif results == "LOSS"
+          coaches[coach][:losses] += 1
+        else
+          coaches[coach][:ties] += 1
+        end
+      else
+        coaches[coach][:games_coached] += 1
+        if results == "WIN"
+          coaches[coach][:wins] += 1
+        elsif results == "LOSS"
+          coaches[coach][:losses] += 1
+        else
+          coaches[coach][:ties] += 1
+        end
+      end
+    end
+    coaches
+  end
   
   def winningest_coach
-      
+    coaches_winning_percentage = Hash.new
+    record_of_each_coach.each do |coach, record|
+      coaches_winning_percentage[coach]
+
+    end
   end
 
 #   def worst_coach
