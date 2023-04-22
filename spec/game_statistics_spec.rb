@@ -86,9 +86,16 @@ RSpec.describe GameStatistics do
 
   describe "#average_goals_by_season" do 
     it "can calculate the average goals per season" do 
+      expected = {"20122013"=>4.12,
+                  "20132014"=>4.19,
+                  "20142015"=>4.14,
+                  "20152016"=>4.16,
+                  "20162017"=>4.23,
+                  "20172018"=>4.44}
+      expect(@game_stats.average_goals_by_season).to eq(expected)
       expect(@game_stats.average_goals_by_season).to be_a(Hash)
-      expect(@game_stats.average_goals_by_season.keys[0]).to be_a (String)
-      expect(@game_stats.average_goals_by_season.values[0]).to be_a (Float)
+      expect(@game_stats.average_goals_by_season.keys[0]).to be_a(String)
+      expect(@game_stats.average_goals_by_season.values[0]).to be_a(Float)
     end
   end
 end
