@@ -40,6 +40,18 @@ RSpec.describe StatTracker do
       expect(@stat_tracker.teams.sample).to be_a(Teams)
       expect(@stat_tracker.teams).to all(be_a(Teams))
     end
+
+    it "can create a GameStatistics object from StatTracker" do
+      expect(@stat_tracker.game_stats).to be_a(GameStatistics)
+    end
+
+    it "can create a LeagueStatistics object from StatTracker" do
+      expect(@stat_tracker.league_stats).to be_a(LeagueStatistics)
+    end
+
+    it "can create a SeasonStatistics object from StatTracker" do
+      expect(@stat_tracker.season_stats).to be_a(SeasonStatistics)
+    end
   end
 
   describe "Game Statistics" do
