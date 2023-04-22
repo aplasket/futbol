@@ -41,7 +41,7 @@ RSpec.describe StatTracker do
   end
 
   describe "#games.csv" do
-    it "can create an object from StatTracker" do  
+    it "can create an object from StatTracker from games.csv" do  
       expect(@stat_tracker.games[0].game_id).to eq("2012030221")
       expect(@stat_tracker.games).to be_an(Array)
       expect(@stat_tracker.games.sample).to be_a(Game)
@@ -50,11 +50,20 @@ RSpec.describe StatTracker do
   end
 
   describe "#game_teams.csv" do
-    it "can create an object from StatTracker" do  
+    it "can create an object from StatTracker from game_teams.csv" do  
       expect(@stat_tracker.game_teams[0].game_id).to eq("2012030221")
       expect(@stat_tracker.game_teams).to be_an(Array)
       expect(@stat_tracker.game_teams.sample).to be_a(GameTeams)
       expect(@stat_tracker.game_teams).to all(be_a(GameTeams))
+    end
+  end
+
+  describe "#teams.csv" do
+    it "can create an object from StatTracker from teams.csv" do
+      expect(@stat_tracker.teams[0].team_id).to eq("1")
+      expect(@stat_tracker.teams).to be_an(Array)
+      expect(@stat_tracker.teams.sample).to be_a(Teams)
+      expect(@stat_tracker.teams).to all(be_a(Teams))
     end
   end
 end
