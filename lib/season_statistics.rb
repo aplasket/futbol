@@ -123,14 +123,13 @@ class SeasonStatistics < StatHelper
 
   def most_tackles(season)
     team_tackles = Hash.new(0)
-    seasonal_team_games = @game_teams.group_by(&:game_id)
+    seasonal_team_games = []
 
-    game_id.start_with?(season)
-    # @game_teams.select do |team|
-    #   if 
-    # end
-
-    require 'pry'; binding.pry
+    @game_teams.each do |team|
+      if team.game_id[0, 4] == season[0, 4] 
+        seasonal_team_games << team
+      end
+    end
     seasonal_team_games.each do |team|
       team_id = team.team_id
       tackles = team.tackles
@@ -139,6 +138,7 @@ class SeasonStatistics < StatHelper
     most_tacks = team_tackles.max_by {|id, avg| avg}  
     @teams.find {|team| team.team_id == most_tacks.first}.team_name
   end
+  # require 'pry'; binding.pry
 
   def fewest_tackles(season)
     team_tackles = Hash.new(0)
