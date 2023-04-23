@@ -42,7 +42,7 @@ RSpec.describe SeasonStatistics do
 
 
   describe "#validate_season(season)" do
-    xit "validates if data for that season is available" do
+    it "validates if data for that season is available" do
       expect(@season_stats.validate_season("20122013")).to be(true)
       expect(@season_stats.validate_season("20112012")).to be(false)
     end
