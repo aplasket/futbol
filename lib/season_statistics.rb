@@ -103,7 +103,6 @@ class SeasonStatistics < StatHelper
     end
     coaches_losing_percentage
   end
-
   # def biggest_loser_percentage(season)
   #   coaches = losing_percentages(season)
   #   worst_percentage = coaches.values.max
