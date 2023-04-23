@@ -16,26 +16,109 @@ RSpec.describe SeasonStatistics do
     @season_stats = SeasonStatistics.new(locations)
   end
 
-  describe "#initialize" do
+  describe "#initialize(files)" do
     it "exists" do
       expect(@season_stats).to be_a(SeasonStatistics)
       expect(@stat_tracker).to be_a(StatTracker)
     end
   end
 
-#   describe "#winningest_coach" do
-#     xit " names the Coach with the best win percentage for the season" do 
+  describe "#find_seasons" do
+    it "list the seasons that have data available" do
+      expect(@season_stats.find_seasons).to be_a(Array)
+      expect(@season_stats.find_seasons).to eq(["20122013", "20132014", "20142015", "20152016", "20162017", "20172018"])
+    end
+  end
 
-#       # return value string
-#     end
-#   end
+  describe "find_season_games(season)" do
+    it "lists each game played in a season" do
+      expect(@season_stats.find_season_games("2012013")).to be(false)
+      expect(@season_stats.find_season_games("20122013")).to be_a(Array)
+      expect(@season_stats.find_season_games("20122013").first).to be_a(String)
+      expect(@season_stats.find_season_games("20122013").first).to eq("2012030221")
+      expect(@season_stats.find_season_games("20172018").last).to eq("2017020726")
+    end
+  end
 
-#   describe "#worst_coach" do
-#     xit " names the Coach with the worst win percentage for the season" do 
+  describe "#validate_season(season)" do
+    it "validates if data for that season is available" do
+      expect(@season_stats.validate_season("20122013")).to be(true)
+      expect(@season_stats.validate_season("20112012")).to be(false)
+    end
+  end
 
-#       # return value string
-#     end
-#   end
+  describe "#coach_record(season)" do 
+    it "can list the loss, ties, and wins of each coach for each season" do 
+      expect(@season_stats.coaches_record("20122013")).to be_a(Hash)
+      expect(@season_stats.coaches_record("20122013")["20122013"]["John Tortorella"]).to eq({:games_coached=>60, :losses=>27, :ties=>11, :wins=>22})
+      expect(@season_stats.coaches_record("20132014")["20132014"]["John Tortorella"]).to eq({:games_coached=>82, :losses=>31, :ties=>18, :wins=>33})
+      expect(@season_stats.coaches_record("20172018")["20172018"]["Bob Boughner"]).to eq({:games_coached=>82, :losses=>28, :ties=>16, :wins=>38})
+      expect(@season_stats.coaches_record("20172018")["20172018"].keys.first).to eq("Peter DeBoer")
+      expect(@season_stats.coaches_record("20172018")["20172018"].values.first).to eq({:games_coached=>92, :losses=>28, :ties=>20, :wins=>44})
+    end
+  end
+
+  describe "#winning_percentages(season)" do
+    it " lists the coach's winning percentage for the requested season" do 
+      expect(@season_stats.winning_percentages("20132014")).to be_a(Hash)
+      expect(@season_stats.winning_percentages("20132014").key?("Claude Julien")).to be(true)
+      expect(@season_stats.winning_percentages("20132014").values.max).to eq(57.45)
+      expect(@season_stats.winning_percentages("20132014")["Claude Julien"]).to eq(57.45)
+      
+      expect(@season_stats.winning_percentages("20142015")).to be_a(Hash)
+      expect(@season_stats.winning_percentages("20142015").key?("Alain Vigneault")).to be(true)
+      expect(@season_stats.winning_percentages("20142015").values.max).to eq(51.49)
+      expect(@season_stats.winning_percentages("20142015")["Alain Vigneault"]).to eq(51.49)
+    end
+  end
+
+  describe "#winningest_coach(season)" do
+    it " names the coach with the best win percentage for the season" do 
+      expect(@season_stats.winningest_coach("20132014")).to be_a(String)
+      expect(@season_stats.winningest_coach("20132014")).to eq("Claude Julien")
+
+      expect(@season_stats.winningest_coach("20142015")).to be_a(String)
+      expect(@season_stats.winningest_coach("20142015")).to eq("Alain Vigneault")
+    end
+  end
+
+  describe "#losing_percentages(season)" do
+    it " lists the coach's losing percentage for the requested season" do 
+      expect(@season_stats.losing_percentages("20132014")).to be_a(Hash)
+      expect(@season_stats.losing_percentages("20132014").key?("Peter Laviolette")).to be(true)
+      expect(@season_stats.losing_percentages("20132014").values.max).to eq(100.00)
+      expect(@season_stats.losing_percentages("20132014")["Peter Laviolette"]).to eq(100.00)
+      
+      expect(@season_stats.losing_percentages("20142015")).to be_a(Hash)
+      expect(@season_stats.losing_percentages("20142015").key?("Dallas Eakins")).to be(true)
+      expect(@season_stats.losing_percentages("20142015").values.max).to eq(64.52)
+      expect(@season_stats.losing_percentages("20142015")["Dallas Eakins"]).to eq(64.52)
+    end
+  end
+
+  describe "#worst_coach(season)" do
+    it " names the Coach with the worst win percentage for the season" do 
+      expect(@season_stats.worst_coach("20132014")).to be_a(String)
+      expect(@season_stats.worst_coach("20132014")).to eq("Peter Laviolette")
+
+      expect(@season_stats.worst_coach("20142015")).to be_a(String)
+      expect(@season_stats.worst_coach("20142015")).to eq("Dallas Eakins") 
+    end
+  end
+
+  describe "#highest_percentage(season, reveal)" do
+    it " reveals the top winner or loser." do 
+      expect(@season_stats.highest_percentage("20132014","winner")).to be_a(String)
+      expect(@season_stats.highest_percentage("20132014","winner")).to eq("Claude Julien")
+      expect(@season_stats.highest_percentage("20142015","winner")).to be_a(String)
+      expect(@season_stats.highest_percentage("20142015","winner")).to eq("Alain Vigneault")
+
+      expect(@season_stats.highest_percentage("20132014","loser")).to be_a(String)
+      expect(@season_stats.highest_percentage("20132014","loser")).to eq("Peter Laviolette")
+      expect(@season_stats.highest_percentage("20142015","loser")).to be_a(String)
+      expect(@season_stats.highest_percentage("20142015","loser")).to eq("Dallas Eakins")
+    end
+  end
 
 #   describe "#most_accurate_team" do
 #     xit " names the Team with the best ratio of shots to goals for the season" do 
