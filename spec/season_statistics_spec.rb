@@ -31,9 +31,12 @@ RSpec.describe SeasonStatistics do
   end
 
   describe "find_season_games(season)" do
-    xit "lists each game played in a season" do
-      # we may need to use a mock or stub here
+    it "lists each game played in a season" do
+      expect(@season_stats.find_season_games("2012013")).to be(false)
       expect(@season_stats.find_season_games("20122013")).to be_a(Array)
+      expect(@season_stats.find_season_games("20122013").first).to be_a(String)
+      expect(@season_stats.find_season_games("20122013").first).to eq("2012030221")
+      expect(@season_stats.find_season_games("20172018").last).to eq("2017020726")
     end
   end
 
