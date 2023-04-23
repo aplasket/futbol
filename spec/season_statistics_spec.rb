@@ -16,7 +16,7 @@ RSpec.describe SeasonStatistics do
     @season_stats = SeasonStatistics.new(locations)
   end
 
-  describe "#initialize" do
+  describe "#initialize(files)" do
     it "exists" do
       expect(@season_stats).to be_a(SeasonStatistics)
       expect(@stat_tracker).to be_a(StatTracker)
@@ -50,9 +50,13 @@ RSpec.describe SeasonStatistics do
 
 
   describe "#coach_record(season)" do 
-    xit "can list the loss, ties, and wins of each coach for each season" do 
+    it "can list the loss, ties, and wins of each coach for each season" do 
       expect(@season_stats.coaches_record("20122013")).to be_a(Hash)
-      expect(@season_stats.coaches_record("20122013")).to eq({})
+      expect(@season_stats.coaches_record("20122013")["20122013"]["John Tortorella"]).to eq({:games_coached=>60, :losses=>27, :ties=>11, :wins=>22})
+      expect(@season_stats.coaches_record("20132014")["20132014"]["John Tortorella"]).to eq({:games_coached=>82, :losses=>31, :ties=>18, :wins=>33})
+      expect(@season_stats.coaches_record("20172018")["20172018"]["Bob Boughner"]).to eq({:games_coached=>82, :losses=>28, :ties=>16, :wins=>38})
+      expect(@season_stats.coaches_record("20172018")["20172018"].keys.first).to eq("Peter DeBoer")
+      expect(@season_stats.coaches_record("20172018")["20172018"].values.first).to eq({:games_coached=>92, :losses=>28, :ties=>20, :wins=>44})
     end
   end
   
