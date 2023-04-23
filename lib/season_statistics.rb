@@ -6,51 +6,108 @@ class SeasonStatistics < StatHelper
     super
   end
 
-  def coaches_record
+  def find_seasons
+    seasons = @games.map {|game| game.season}
+    edited_seasons = seasons.map {|season| season.to_i}
+    revised_seasons = edited_seasons.uniq
+    formated_seasons = revised_seasons.map {|rev_season| rev_season.to_s}
+    formated_seasons.sort
+  end
+
+  def find_season_games(season)
+    game_names = []
+    @games.find_all do |game|
+      game_name = game.game_id
+      if game.season == season
+        game_names << game_name
+      else
+        next
+      end
+    end
+    game_names
+  end
+
+  def validate_season(season)
+    return false if !find_seasons.include?(season)
+    true
+  end
+
+  def coaches_record(season)
+    validate_season(season)
     coaches = Hash.new
-  
+    season_record = Hash.new
+    season_record[season] = coaches
+    played_games = find_season_games(season)
     @game_teams.each do |team|
       coach = team.head_coach
       results = team.result
-      if !coaches.key?(coach)
-        coaches[coach] = {games_coached: 1, wins: 0, losses: 0, ties: 0}
-        if results == "WIN"
-          coaches[coach][:wins] += 1
-        elsif results == "LOSS"
-          coaches[coach][:losses] += 1
+      game = team.game_id
+      if played_games.include?(game)
+        if !coaches.key?(coach)
+          coaches[coach] = {games_coached: 1, wins: 0, losses: 0, ties: 0}
+          if results == "WIN"
+            coaches[coach][:wins] += 1
+          elsif results == "LOSS"
+            coaches[coach][:losses] += 1
+          elsif results == "TIE"
+            coaches[coach][:ties] += 1
+          end
         else
-          coaches[coach][:ties] += 1
+          coaches[coach][:games_coached] += 1
+          if results == "WIN"
+            coaches[coach][:wins] += 1
+          elsif results == "LOSS"
+            coaches[coach][:losses] += 1
+          elsif results == "TIE"
+            coaches[coach][:ties] += 1
+          end
         end
       else
-        coaches[coach][:games_coached] += 1
-        if results == "WIN"
-          coaches[coach][:wins] += 1
-        elsif results == "LOSS"
-          coaches[coach][:losses] += 1
-        else
-          coaches[coach][:ties] += 1
-        end
+        next
       end
     end
-    coaches
+    season_record
   end
   
-  def winningest_coach
+  # def eligible_coaches(season)
+  #   eligible_coaches = coaches_record(season)[season].reject do |coach, record|
+  #     record[:games_coached] < 82
+  #   end
+  # end
+
+  def winning_percentages(season)
     coaches_winning_percentage = Hash.new
-    coaches_record.map do |coach, record|
+    coaches_record(season)[season].map do |coach, record|
       coaches_winning_percentage[coach] = (record[:wins].to_f) / (record[:games_coached].to_f) * 100
     end
-    best_coach = coaches_winning_percentage
-    best_coach.max_by {|coach, winning_percentage|winning_percentage}[0]
+    coaches_winning_percentage
   end
 
-  def worst_coach
+  def winningest_coach(season)
+    coaches = winning_percentages(season)
+    best_percentage = coaches.values.max
+    best_coaches = coaches.select {|coach, winning_percentage|winning_percentage == best_percentage}.keys
+    best_coaches[0]
+  end
+
+  def losing_percentages(season)
     coaches_losing_percentage = Hash.new
-    coaches_record.map do |coach, record|
+    coaches_record(season)[season].map do |coach, record|
       coaches_losing_percentage[coach] = (record[:losses].to_f) / (record[:games_coached].to_f) * 100
     end
-    worst_coach = coaches_losing_percentage
-    worst_coach.max_by {|coach, losing_percentage|losing_percentage}[0]
+    coaches_losing_percentage
+  end
+
+  # def biggest_loser_percentage(season)
+  #   coaches = losing_percentages(season)
+  #   worst_percentage = coaches.values.max
+  # end
+
+  def worst_coach(season)
+    coaches = losing_percentages(season)
+    worst_percentage = coaches.values.max
+    worst_coaches = coaches.select {|coach, losing_percentage|losing_percentage == worst_percentage}.keys
+    worst_coaches[0]
   end
 
 #   def most_accurate_team
