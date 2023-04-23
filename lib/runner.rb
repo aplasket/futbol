@@ -13,8 +13,8 @@ locations = {
 }
 
 stat_tracker = StatTracker.from_csv(locations)
-pp stat_tracker.game_stats.teams
-pp stat_tracker.game_stats.game_teams.sample
+pp stat_tracker.teams
+pp stat_tracker.game_teams.sample
 p stat_tracker.game_stats.highest_total_score
 p stat_tracker.league_stats.highest_scoring_home_team
 p stat_tracker.season_stats.worst_coach
