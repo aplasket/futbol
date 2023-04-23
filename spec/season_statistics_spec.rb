@@ -40,14 +40,12 @@ RSpec.describe SeasonStatistics do
     end
   end
 
-
   describe "#validate_season(season)" do
     it "validates if data for that season is available" do
       expect(@season_stats.validate_season("20122013")).to be(true)
       expect(@season_stats.validate_season("20112012")).to be(false)
     end
   end
-
 
   describe "#coach_record(season)" do 
     it "can list the loss, ties, and wins of each coach for each season" do 
