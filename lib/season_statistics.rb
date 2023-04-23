@@ -91,10 +91,6 @@ class SeasonStatistics < StatHelper
     highest_percentage(season, "winning")
   end
 
-  def record_percentages(season, column)
-    
-  end
-
   def losing_percentages(season)
     return false if validate_season(season) == false
     coaches_losing_percentage = Hash.new
@@ -115,10 +111,10 @@ class SeasonStatistics < StatHelper
     highest_percentage(season, "losing")
   end
 
-  def highest_percentage(season, percentage_method)
-    if percentage_method == "winning"
+  def highest_percentage(season, reveal)
+    if reveal == "winner"
       coaches = winning_percentages(season)
-    elsif percentage_method == "losing"
+    elsif reveal == "loser"
       coaches = losing_percentages(season)
     else
       false
