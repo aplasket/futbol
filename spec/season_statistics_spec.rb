@@ -59,14 +59,36 @@ RSpec.describe SeasonStatistics do
       expect(@season_stats.coaches_record("20172018")["20172018"].values.first).to eq({:games_coached=>92, :losses=>28, :ties=>20, :wins=>44})
     end
   end
-  
+
+  describe "#winning_percentages(season)" do
+    it " lists the coach's winning percentage for the requested season" do 
+      expect(@season_stats.winning_percentages("20132014")).to be_a(Hash)
+      expect(@season_stats.winning_percentages("20132014").key?("Claude Julien")).to be(true)
+      expect(@season_stats.winning_percentages("20132014").values.max).to eq(57.45)
+      
+      expect(@season_stats.winning_percentages("20142015")).to be_a(Hash)
+      expect(@season_stats.winning_percentages("20142015").key?("Alain Vigneault")).to be(true)
+      expect(@season_stats.winning_percentages("20142015").values.max).to eq(51.49)
+    end
+  end
+
   describe "#winningest_coach(season)" do
     it " names the Coach with the best win percentage for the season" do 
+      expect(@season_stats.winningest_coach("20132014")).to be_a(String)
+      expect(@season_stats.winningest_coach("20132014")).to eq("Claude Julien")
+
+      expect(@season_stats.winningest_coach("20142015")).to be_a(String)
+      expect(@season_stats.winningest_coach("20142015")).to eq("Alain Vigneault")
+    end
+  end
+  describe "#losing_percentages(season)" do
+    xit " lists the coach's losing percentage for the requested season" do 
       expect(@season_stats.winningest_coach("20122013")).to be_a(String)
       expect(@season_stats.winningest_coach("20132014")).to eq("Claude Julien")
       expect(@season_stats.winningest_coach("20142015")).to eq("Alain Vigneault")
     end
   end
+
 
   describe "#worst_coach(season)" do
     it " names the Coach with the worst win percentage for the season" do 
