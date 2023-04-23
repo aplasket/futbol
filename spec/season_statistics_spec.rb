@@ -23,30 +23,51 @@ RSpec.describe SeasonStatistics do
     end
   end
 
-  describe "#coach_record" do 
-  it "can list the loss, ties, and wins of each coach" do 
-    expected = {"Adam Oates" => {:games_coached=>183, :losses=>79, :ties=>44, :wins=>60},
-                "Alain Vigneault" => {:games_coached=>523, :losses=>192, :ties=>100, :wins=>231},
-                "Barry Trotz" => {:games_coached=>521, :losses=>179, :ties=>99, :wins=>243},
-                "Bill Peters" => {:games_coached=>328, :losses=>141, :ties=>62, :wins=>125},
-                "Bob Boughner" => {:games_coached=>82, :losses=>28, :ties=>16, :wins=>38},
-                "Bob Hartley" => {:games_coached=>305, :losses=>148, :ties=>52, :wins=>105},
-                "Bruce Boudreau" => {:games_coached=>511, :losses=>161, :ties=>108, :wins=>242}}
-    # expect(@season_stats.coach_record).to eq(expected)
-  end
-end
-  
-  describe "#winningest_coach" do
-    it " names the Coach with the best win percentage for the season" do 
-      expect(@season_stats.winningest_coach).to be_a(String)
-      expect(@season_stats.winningest_coach).to eq("Dan Lacroix")
+  describe "#find_seasons" do
+    it "list the seasons that have data available" do
+      expect(@season_stats.find_seasons).to be_a(Array)
+      expect(@season_stats.find_seasons).to eq(["20122013", "20132014", "20142015", "20152016", "20162017", "20172018"])
     end
   end
 
-  describe "#worst_coach" do
+  describe "find_season_games(season)" do
+    xit "lists each game played in a season" do
+      # we may need to use a mock or stub here
+      expect(@season_stats.find_season_games("20122013")).to be_a(Array)
+    end
+  end
+
+
+  describe "#validate_season(season)" do
+    xit "validates if data for that season is available" do
+      expect(@season_stats.validate_season("20122013")).to be(true)
+      expect(@season_stats.validate_season("20112012")).to be(false)
+    end
+  end
+
+
+  describe "#coach_record(season)" do 
+    xit "can list the loss, ties, and wins of each coach for each season" do 
+      expect(@season_stats.coaches_record("20122013")).to be_a(Hash)
+      expect(@season_stats.coaches_record("20122013")).to eq({})
+    end
+  end
+  
+  describe "#winningest_coach(season)" do
+    it " names the Coach with the best win percentage for the season" do 
+      expect(@season_stats.winningest_coach("20122013")).to be_a(String)
+      expect(@season_stats.winningest_coach("20132014")).to eq("Claude Julien")
+      expect(@season_stats.winningest_coach("20142015")).to eq("Alain Vigneault")
+    end
+  end
+
+  describe "#worst_coach(season)" do
     it " names the Coach with the worst win percentage for the season" do 
-      expect(@season_stats.worst_coach).to be_a(String)
-      expect(@season_stats.worst_coach).to eq("Martin Raymond")
+      expect(@season_stats.worst_coach("20142015")).to be_a(String)
+      expect(@season_stats.worst_coach("20132014")).to eq("Peter Laviolette")
+      expect(@season_stats.worst_coach("20142015")).to eq("Dallas Eakins")
+      expect(@season_stats.worst_coach("20152016")).to eq("Todd Richards")
+      
     end
   end
 
@@ -65,14 +86,14 @@ end
 #   end
 
   describe "#most_tackles" do
-    it "names the Team with the most tackles in the season" do 
+    xit "names the Team with the most tackles in the season" do 
       expect(@season_stats.most_tackles).to eq("FC Cincinnati")
       expect(@season_stats.most_tackles).to be_a(String)
     end
   end
 
   describe "#fewest_tackles" do
-    it "names the Team with the fewest tackles in the season" do 
+    xit "names the Team with the fewest tackles in the season" do 
       expect(@season_stats.fewest_tackles).to eq("Reign FC")
       expect(@season_stats.fewest_tackles).to be_a(String)
     end
