@@ -31,7 +31,6 @@ class SeasonStatistics < StatHelper
   def validate_season(season)
     return false if !find_seasons.include?(season)
     true
-    
   end
 
   def coaches_record(season)
