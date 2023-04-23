@@ -15,6 +15,7 @@ class SeasonStatistics < StatHelper
   end
 
   def find_season_games(season)
+    return false if validate_season(season) == false
     game_names = []
     @games.find_all do |game|
       game_name = game.game_id
@@ -33,7 +34,7 @@ class SeasonStatistics < StatHelper
   end
 
   def coaches_record(season)
-    validate_season(season)
+    return false if validate_season(season) == false
     coaches = Hash.new
     season_record = Hash.new
     season_record[season] = coaches
@@ -76,6 +77,7 @@ class SeasonStatistics < StatHelper
   # end
 
   def winning_percentages(season)
+    return false if !find_seasons.include?(season)
     coaches_winning_percentage = Hash.new
     coaches_record(season)[season].map do |coach, record|
       coaches_winning_percentage[coach] = (record[:wins].to_f) / (record[:games_coached].to_f) * 100
@@ -84,6 +86,7 @@ class SeasonStatistics < StatHelper
   end
 
   def winningest_coach(season)
+    return false if !find_seasons.include?(season)
     coaches = winning_percentages(season)
     best_percentage = coaches.values.max
     best_coaches = coaches.select {|coach, winning_percentage|winning_percentage == best_percentage}.keys
@@ -91,6 +94,7 @@ class SeasonStatistics < StatHelper
   end
 
   def losing_percentages(season)
+    return false if !find_seasons.include?(season)
     coaches_losing_percentage = Hash.new
     coaches_record(season)[season].map do |coach, record|
       coaches_losing_percentage[coach] = (record[:losses].to_f) / (record[:games_coached].to_f) * 100
@@ -104,6 +108,7 @@ class SeasonStatistics < StatHelper
   # end
 
   def worst_coach(season)
+    return false if !find_seasons.include?(season)
     coaches = losing_percentages(season)
     worst_percentage = coaches.values.max
     worst_coaches = coaches.select {|coach, losing_percentage|losing_percentage == worst_percentage}.keys
