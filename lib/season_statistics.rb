@@ -69,12 +69,6 @@ class SeasonStatistics < StatHelper
     end
     season_record
   end
-  
-  # def eligible_coaches(season)
-  #   eligible_coaches = coaches_record(season)[season].reject do |coach, record|
-  #     record[:games_coached] < 82
-  #   end
-  # end
 
   def winning_percentages(season)
     return false if validate_season(season) == false
@@ -88,7 +82,7 @@ class SeasonStatistics < StatHelper
 
   def winningest_coach(season)
     return false if validate_season(season) == false
-    highest_percentage(season, "winning")
+    highest_percentage(season, "winner")
   end
 
   def losing_percentages(season)
@@ -101,14 +95,9 @@ class SeasonStatistics < StatHelper
     coaches_losing_percentage
   end
 
-  # def biggest_loser_percentage(season)
-  #   coaches = losing_percentages(season)
-  #   worst_percentage = coaches.values.max
-  # end
-
   def worst_coach(season)
     return false if validate_season(season) == false
-    highest_percentage(season, "losing")
+    highest_percentage(season, "loser")
   end
 
   def highest_percentage(season, reveal)
@@ -162,3 +151,14 @@ class SeasonStatistics < StatHelper
     @teams.find {|team| team.team_id == fewest_tacks.first}.team_name
   end
 end 
+
+  # def biggest_loser_percentage(season)
+  #   coaches = losing_percentages(season)
+  #   worst_percentage = coaches.values.max
+  # end
+
+  # def eligible_coaches(season)
+  #   eligible_coaches = coaches_record(season)[season].reject do |coach, record|
+  #     record[:games_coached] < 82
+  #   end
+  # end
