@@ -108,6 +108,20 @@ RSpec.describe SeasonStatistics do
     end
   end
 
+  describe "#highest_percentage(season, reveal)" do
+    it " reveals the top winner or loser." do 
+      expect(@season_stats.highest_percentage("20132014","winner")).to be_a(String)
+      expect(@season_stats.highest_percentage("20132014","winner")).to eq("Claude Julien")
+      expect(@season_stats.highest_percentage("20142015","winner")).to be_a(String)
+      expect(@season_stats.highest_percentage("20142015","winner")).to eq("Alain Vigneault")
+
+      expect(@season_stats.highest_percentage("20132014","loser")).to be_a(String)
+      expect(@season_stats.highest_percentage("20132014","loser")).to eq("Peter Laviolette")
+      expect(@season_stats.highest_percentage("20142015","loser")).to be_a(String)
+      expect(@season_stats.highest_percentage("20142015","loser")).to eq("Dallas Eakins")
+    end
+  end
+
 #   describe "#most_accurate_team" do
 #     xit " names the Team with the best ratio of shots to goals for the season" do 
 
