@@ -50,7 +50,7 @@ class SeasonStatistics < StatHelper
             coaches[coach][:wins] += 1
           elsif results == "LOSS"
             coaches[coach][:losses] += 1
-          elsif results == "TIE"
+          else
             coaches[coach][:ties] += 1
           end
         else
@@ -59,7 +59,7 @@ class SeasonStatistics < StatHelper
             coaches[coach][:wins] += 1
           elsif results == "LOSS"
             coaches[coach][:losses] += 1
-          elsif results == "TIE"
+          else
             coaches[coach][:ties] += 1
           end
         end
@@ -88,10 +88,11 @@ class SeasonStatistics < StatHelper
 
   def winningest_coach(season)
     return false if validate_season(season) == false
-    coaches = winning_percentages(season)
-    best_percentage = coaches.values.max
-    best_coaches = coaches.select {|coach, winning_percentage|winning_percentage == best_percentage}.keys
-    best_coaches[0]
+    highest_percentage(season, "winning")
+  end
+
+  def record_percentages(season, column)
+    
   end
 
   def losing_percentages(season)
@@ -103,6 +104,7 @@ class SeasonStatistics < StatHelper
     end
     coaches_losing_percentage
   end
+
   # def biggest_loser_percentage(season)
   #   coaches = losing_percentages(season)
   #   worst_percentage = coaches.values.max
@@ -110,10 +112,20 @@ class SeasonStatistics < StatHelper
 
   def worst_coach(season)
     return false if validate_season(season) == false
-    coaches = losing_percentages(season)
-    worst_percentage = coaches.values.max
-    worst_coaches = coaches.select {|coach, losing_percentage|losing_percentage == worst_percentage}.keys
-    worst_coaches[0]
+    highest_percentage(season, "losing")
+  end
+
+  def highest_percentage(season, percentage_method)
+    if percentage_method == "winning"
+      coaches = winning_percentages(season)
+    elsif percentage_method == "losing"
+      coaches = losing_percentages(season)
+    else
+      false
+    end
+      top_percentage = coaches.values.max
+      top_percentage = coaches.select {|coach, percentage|percentage == top_percentage}.keys
+      top_percentage[0]
   end
 
 #   def most_accurate_team
