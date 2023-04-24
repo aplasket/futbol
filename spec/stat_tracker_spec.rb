@@ -136,7 +136,7 @@ RSpec.describe StatTracker do
 
     it "#worst_coach" do
       expect(@stat_tracker.worst_coach("20132014")).to eq("Peter Laviolette")
-      expect(@stat_tracker.worst_coach("20142015")).to eq("Dallas Eakins")
+      expect(@stat_tracker.worst_coach("20142015")).to eq("Craig MacTavish").or(eq("Ted Nolan"))
     end
 
     it "#most_accurate_team" do

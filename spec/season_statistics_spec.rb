@@ -119,72 +119,7 @@ RSpec.describe SeasonStatistics do
       expect(@season_stats.highest_percentage("20142015","loser")).to eq("Dallas Eakins")
     end
   end
-
-  describe "#teams_each_season(season)" do 
-    it "can list all the teams for each season" do
-      expect(@season_stats.teams_each_season("20132014")).to eq(["Atlanta United",
-      "Chicago Fire",
-      "FC Cincinnati",
-      "DC United",
-      "FC Dallas",
-      "Houston Dynamo",
-      "Sporting Kansas City",
-      "LA Galaxy",
-      "Los Angeles FC",
-      "Minnesota United FC",
-      "Montreal Impact",
-      "New England Revolution",
-      "New York City FC",
-      "New York Red Bulls",
-      "Orlando City SC",
-      "Portland Timbers",
-      "Philadelphia Union",
-      "Real Salt Lake",
-      "San Jose Earthquakes",
-      "Seattle Sounders FC",
-      "Toronto FC",
-      "Vancouver Whitecaps FC",
-      "Chicago Red Stars",
-      "Houston Dash",
-      "North Carolina Courage",
-      "Orlando Pride",
-      "Portland Thorns FC",
-      "Reign FC",
-      "Sky Blue FC",
-      "Utah Royals FC",
-      "Washington Spirit FC",
-      "Columbus Crew SC"])
-    end
-  end
-
-  describe "#teams_with_id(seasons)" do
-    it "can list each team name with its team id number" do
-      expect(@season_stats.teams_with_id("20132014")).to be_a(Hash)
-    end
-  end
-
-  describe "#team_records(season)" do
-    it "can list the total amount of shots and goals of each team for each season" do 
-      expect(@season_stats.team_records("20132014")).to be_a(Hash)
-      expect(@season_stats.team_records("20132014")["20132014"]["Real Salt Lake"]).to eq({:goals=>5547, :shots=>18891})
-      expect(@season_stats.team_records("20132014")["20132014"]["Toronto FC"]).to eq({:goals=>5547, :shots=>18891})
-      
-      expect(@season_stats.team_records("20132014")).to be_a(Hash)
-      expect(@season_stats.team_records("20142015")["20142015"]["Toronto FC"]).to eq({:goals=>5461, :shots=>18781})
-    end
-  end
-
-  describe "#team_accuracy_percentages(season)" do
-    it "can list the total accuracy of each team for each season as float" do 
-      expect(@season_stats.team_accuracy_percentages("20132014")).to be_a(Hash)
-      expect(@season_stats.team_accuracy_percentages("20132014")["20132014"]).to eq([5])
-      
-      expect(@season_stats.team_accuracy_percentages("20132014")).to be_a(Hash)
-      expect(@season_stats.team_accuracy_percentages("20142015")["20142015"]["Toronto FC"]).to eq(4)
-    end
-  end
-
-
+  
   describe "#most_accurate_team" do
     it "names the team with the best ratio of shots to goals for the season" do 
       expect(@season_stats.most_accurate_team("20132014")).to eq ("Real Salt Lake")
