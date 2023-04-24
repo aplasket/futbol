@@ -201,7 +201,6 @@ class SeasonStatistics < StatHelper
       tackles = team.tackles
       team_tackles[team_id] += tackles
     end
-
     fewest_tacks = team_tackles.min_by {|id, total| total}  
     @teams.find {|team| team.team_id == fewest_tacks.first}.team_name
   end
