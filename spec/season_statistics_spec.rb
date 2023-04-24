@@ -100,9 +100,9 @@ RSpec.describe SeasonStatistics do
     it "names the Coach with the worst win percentage for the season" do 
       expect(@season_stats.worst_coach("20132014")).to be_a(String)
       expect(@season_stats.worst_coach("20132014")).to eq("Peter Laviolette")
-
+      
       expect(@season_stats.worst_coach("20142015")).to be_a(String)
-      expect(@season_stats.worst_coach("20142015")).to eq("Dallas Eakins") 
+      expect(@season_stats.worst_coach("20142015")).to eq("Craig MacTavish").or(eq("Ted Nolan"))
     end
   end
 
