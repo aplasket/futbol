@@ -1,5 +1,3 @@
-# The below is copie from the example in iteration 2 under File I/0
-# runner.rb
 require_relative 'stat_tracker'
 
 game_path = './data/games.csv'
