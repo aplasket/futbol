@@ -201,18 +201,8 @@ class SeasonStatistics < StatHelper
       tackles = team.tackles
       team_tackles[team_id] += tackles
     end
+
     fewest_tacks = team_tackles.min_by {|id, total| total}  
     @teams.find {|team| team.team_id == fewest_tacks.first}.team_name
   end
 end 
-
-  # def biggest_loser_percentage(season)
-  #   coaches = losing_percentages(season)
-  #   worst_percentage = coaches.values.max
-  # end
-
-  # def eligible_coaches(season)
-  #   eligible_coaches = coaches_record(season)[season].reject do |coach, record|
-  #     record[:games_coached] < 82
-  #   end
-  # end

@@ -201,17 +201,27 @@ RSpec.describe SeasonStatistics do
     end
   end
 
-  #DO NOT MERGE describe "#most_tackles" do #DO NOT MERGE
-    xit "names the Team with the most tackles in the season" do 
-      expect(@season_stats.most_tackles).to eq("FC Cincinnati")
-      expect(@season_stats.most_tackles).to be_a(String)
+  describe "#most_tackles" do
+    it "names the Team with the most tackles for a given season" do 
+      expect(@season_stats.most_tackles("20122013")).to be_a(String)
+      expect(@season_stats.most_tackles("20122013")).to eq("FC Cincinnati")
+      expect(@season_stats.most_tackles("20132014")).to eq("FC Cincinnati")
+      expect(@season_stats.most_tackles("20142015")).to eq("Seattle Sounders FC")
+      expect(@season_stats.most_tackles("20152016")).to eq("Seattle Sounders FC")
+      expect(@season_stats.most_tackles("20162017")).to eq("Sporting Kansas City")
+      expect(@season_stats.most_tackles("20172018")).to eq("Portland Timbers")
     end
   end
 
-  #DO NOT MERGE describe "#fewest_tackles" do #DO NOT MERGE
-    xit "names the Team with the fewest tackles in the season" do 
-      expect(@season_stats.fewest_tackles).to eq("Reign FC")
-      expect(@season_stats.fewest_tackles).to be_a(String)
+  describe "#fewest_tackles" do
+    it "names the Team with the fewest tackles for a given season" do 
+      expect(@season_stats.fewest_tackles("20122013")).to be_a(String)
+      expect(@season_stats.fewest_tackles("20122013")).to eq("Atlanta United")
+      expect(@season_stats.fewest_tackles("20132014")).to eq("Atlanta United")
+      expect(@season_stats.fewest_tackles("20142015")).to eq("Orlando City SC")
+      expect(@season_stats.fewest_tackles("20152016")).to eq("Montreal Impact")
+      expect(@season_stats.fewest_tackles("20162017")).to eq("New England Revolution")
+      expect(@season_stats.fewest_tackles("20172018")).to eq("New England Revolution")
     end
   end
 end
