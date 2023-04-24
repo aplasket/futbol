@@ -121,44 +121,40 @@ class SeasonStatistics < StatHelper
 #     method
 #   end
 
-  def most_tackles
+  def most_tackles(season)
     team_tackles = Hash.new(0)
-    total_games = Hash.new(0)
+    seasonal_team_games = []
 
     @game_teams.each do |team|
+      if team.game_id[0, 4] == season[0, 4] 
+        seasonal_team_games << team
+      end
+    end
+    seasonal_team_games.each do |team|
       team_id = team.team_id
       tackles = team.tackles
       team_tackles[team_id] += tackles
-      total_games[team_id] += 1
     end
-
-    most_tacks = team_tackles.max_by {|id, avg| avg}  
+    most_tacks = team_tackles.max_by {|id, total| total}  
     @teams.find {|team| team.team_id == most_tacks.first}.team_name
   end
 
-  def fewest_tackles
+  def fewest_tackles(season)
     team_tackles = Hash.new(0)
-    total_games = Hash.new(0)
+    seasonal_team_games = []
 
     @game_teams.each do |team|
+      if team.game_id[0, 4] == season[0, 4] 
+        seasonal_team_games << team
+      end
+    end
+    seasonal_team_games.each do |team|
       team_id = team.team_id
       tackles = team.tackles
       team_tackles[team_id] += tackles
-      total_games[team_id] += 1
     end
 
-    fewest_tacks = team_tackles.min_by {|id, avg| avg}  
+    fewest_tacks = team_tackles.min_by {|id, total| total}  
     @teams.find {|team| team.team_id == fewest_tacks.first}.team_name
   end
 end 
-
-  # def biggest_loser_percentage(season)
-  #   coaches = losing_percentages(season)
-  #   worst_percentage = coaches.values.max
-  # end
-
-  # def eligible_coaches(season)
-  #   eligible_coaches = coaches_record(season)[season].reject do |coach, record|
-  #     record[:games_coached] < 82
-  #   end
-  # end

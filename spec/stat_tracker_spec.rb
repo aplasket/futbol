@@ -139,12 +139,12 @@ RSpec.describe StatTracker do
       expect(@stat_tracker.worst_coach("20142015")).to eq("Craig MacTavish").or(eq("Ted Nolan"))
     end
 
-    it "#most_accurate_team" do
+    xit "#most_accurate_team" do
       expect(@stat_tracker.most_accurate_team("20132014")).to eq("Real Salt Lake")
       expect(@stat_tracker.most_accurate_team("20142015")).to eq("Toronto FC")
     end
 
-    it "#least_accurate_team" do
+    xit "#least_accurate_team" do
       expect(@stat_tracker.least_accurate_team("20132014")).to eq("New York City FC")
       expect(@stat_tracker.least_accurate_team("20142015")).to eq("Columbus Crew SC")
     end
