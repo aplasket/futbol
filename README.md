@@ -6,18 +6,18 @@ Starter repository for the [Turing School](https://turing.io/) Futbol project.
 
 ### About 
 
-This application is designed to analyze futbol team performance.
-The Futbol - PD project has several learning goals:
-Building software in teams
-Use Pull Requests to collaborate among multiple partners
-Practice giving and receiving feedback with teammates
-Establish a project organization process
-Design an Object Oriented Solution to a problem with multiple people
-Use TDD and write clean Ruby following SRP and DRY principles
-We used data from a fictional soccer league to analyze team performance for specific seasons and across seasons. We wanted to see who the best and worst performers are, as well as be able to pull statistics for individual teams. We created a StatTracker class that provided us with information we needed.
-The first step of the project focused on establishing norms for our group. This included the following: project organization process, git workflow expectations, and DTR.
-Next we planned and designed our solution together as a group, as the primary purpose of this project is to practice building software in a team setting. We needed a good design and plan before team members could break off and work asynchronously.
-Once we had strong processes and a plan in place, the project focus shifted on building the base statistics functionality through our StatTracker.
+ - This application is designed to analyze futbol team performance.
+ - The Futbol - PD project has several learning goals:
+    - Building software in teams
+        - Use Pull Requests to collaborate among multiple partners
+        - Practice giving and receiving feedback with teammates
+        - Establish a project organization process
+    - Design an Object Oriented Solution to a problem with multiple people
+    - Use TDD and write clean Ruby following SRP and DRY principles
+ - We used data from a fictional soccer league to analyze team performance for specific seasons and across seasons. We wanted to see who the best and worst performers are, as well as be able to pull statistics for individual teams. We created a StatTracker class that provided us with information we needed.
+ - The first step of the project focused on establishing norms for our group. This included the following: project organization process, git workflow expectations, and DTR.
+ - Next we planned and designed our solution together as a group, as the primary purpose of this project is to practice building software in a team setting. We needed a good design and plan before team members could break off and work asynchronously.
+ - Once we had strong processes and a plan in place, the project focus shifted on building the base statistics functionality through our StatTracker.
 
 ### Built With
 
@@ -44,7 +44,7 @@ Live group check-ins during class group time. Stand up responses state the statu
 
 ### Workflow
 
-Team members assign tasks to themselves, changing status to “In Progress” and creating a pull request when complete, changing status again to “Pull Request”. Pull request workflow is submitted when ready to merge or if stuck or need help, followed by a slack to the group detailing and documenting further any issues. A team member will respond to claim ownership of the review, and reviewers are designated by morning and evening, with Garrett and Ashley reviewing in the AM and Matthew and Lauren taking the PM review shifts. The timeframe for reviewing is up to 12 hours after pull request submission.  Project Board:  https://github.com/users/aplasket/projects/4
+Team members assign tasks to themselves, changing status to “In Progress” and creating a pull request when complete, changing status again to “Pull Request”. Pull request workflow is submitted when ready to merge or if stuck or need help, followed by a slack to the group detailing and documenting further any issues. A team member will respond to claim ownership of the review, and reviewers are designated by morning and evening, with Garrett and Ashley reviewing in the AM and Matthew and Lauren taking the PM review shifts. The timeframe for reviewing is up to 12 hours after pull request submission.  [Project Board](https://github.com/users/aplasket/projects/4)
 
 ### Project Organization
 
@@ -86,18 +86,18 @@ Initial Document created 04/17/2023, updated 04/23/2023
 ## CONTRIBUTORS
 
 ### Ashley Plasket  	       
-Github: https://github.com/aplasket  
-LinkedIn: https://www.linkedin.com/in/ashley-plasket/
+[Github](https://github.com/aplasket) | 
+[LinkedIn](https://www.linkedin.com/in/ashley-plasket/)
 
 ### Lauren Golden  	       
-GitHub: https://github.com/llgolden  
-LinkedIn: https://www.linkedin.com/in/goldenll/
+[GitHub](https://github.com/llgolden) | 
+[LinkedIn](https://www.linkedin.com/in/goldenll/)
 
 ### Matthew William Johnson  
-Github: https://github.com/MWMJohnson  
-LinkedIn: https://www.linkedin.com/in/matthewwjohnsonttu/
+[Github](https://github.com/MWMJohnson) | 
+[LinkedIn](https://www.linkedin.com/in/matthewwjohnsonttu/)
 
 ### Garrett Varenhorst        
-Github: https://github.com/GVarenhorst  
-LinkedIn: https://www.linkedin.com/in/garrett-varenhorst-a734b466
+[Github](https://github.com/GVarenhorst) | 
+[LinkedIn](https://www.linkedin.com/in/garrett-varenhorst-a734b466)
 
