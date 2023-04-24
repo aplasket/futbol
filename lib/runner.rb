@@ -18,4 +18,4 @@ pp stat_tracker.game_teams.sample
 pp stat_tracker.games.sample
 p stat_tracker.game_stats.highest_total_score
 p stat_tracker.league_stats.highest_scoring_home_team
-p stat_tracker.season_stats.worst_coach
+p stat_tracker.season_stats.worst_coach("20132014")
