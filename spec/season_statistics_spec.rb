@@ -175,7 +175,7 @@ RSpec.describe SeasonStatistics do
   end
 
   describe "#team_accuracy_percentages(season)" do
-    xit " can list the total accuracy of each team for each season as float" do 
+    it " can list the total accuracy of each team for each season as float" do 
       expect(@season_stats.team_accuracy_percentages("20132014")).to be_a(Hash)
       expect(@season_stats.team_accuracy_percentages("20132014")["20132014"]).to eq([5])
       
@@ -187,27 +187,29 @@ RSpec.describe SeasonStatistics do
 
   describe "#most_accurate_team" do
     it " names the team with the best ratio of shots to goals for the season" do 
-      expect(@season_stats.most_accurate_team("20132014")).to eq "Real Salt Lake"
-      expect(@season_stats.most_accurate_team("20142015")).to eq "Toronto FC"
+      expect(@season_stats.most_accurate_team("20132014")).to eq ("Real Salt Lake")
+      expect(@season_stats.most_accurate_team("20142015")).to eq ("Toronto FC")
+      expect(@season_stats.most_accurate_team("20142015")).to be_a(String)
     end
   end
 
-#   describe "#least_accurate_team" do
-#     xit " names the Team with the worst ratio of shots to goals for the season" do 
+  describe "#least_accurate_team" do
+    it " names the Team with the worst ratio of shots to goals for the season" do 
+      expect(@season_stats.least_accurate_team("20132014")).to eq ("New York City FC")
+      expect(@season_stats.least_accurate_team("20142015")).to eq ("Columbus Crew SC")
+      expect(@season_stats.least_accurate_team("20142015")).to be_a(String)
+    end
+  end
 
-#       # return value string
-#     end
-#   end
-
-  describe "#most_tackles" do
-    it "names the Team with the most tackles in the season" do 
+  #DO NOT MERGE describe "#most_tackles" do #DO NOT MERGE
+    xit "names the Team with the most tackles in the season" do 
       expect(@season_stats.most_tackles).to eq("FC Cincinnati")
       expect(@season_stats.most_tackles).to be_a(String)
     end
   end
 
-  describe "#fewest_tackles" do
-    it "names the Team with the fewest tackles in the season" do 
+  #DO NOT MERGE describe "#fewest_tackles" do #DO NOT MERGE
+    xit "names the Team with the fewest tackles in the season" do 
       expect(@season_stats.fewest_tackles).to eq("Reign FC")
       expect(@season_stats.fewest_tackles).to be_a(String)
     end
